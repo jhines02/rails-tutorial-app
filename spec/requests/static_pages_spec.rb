@@ -5,50 +5,74 @@ describe "StaticPages" do
   let( :base_title ) { "Ruby on Rails Tutorial Sample App" }
 
   describe "Home page" do
-    it "should have the <h1> element as 'Tutorial App'" do
+    before( :each ) do
       visit '/static_pages/home'
+    end
+      
+    it "should have the <h1> element as 'Tutorial App'" do
       page.should have_selector( 'h1', :text => 'Tutorial App' )
     end
 
-    it "should have the right title" do
-      visit '/static_pages/home'
-      page.should have_selector( 'title', :text => "#{base_title} | Home" )
+    it "should have the base title" do
+      page.should have_selector( 'title', :text => "#{base_title}" )
+    end
+
+    it "should not have a custom page title" do
+      page.should_not have_selector( 'title', :text => '| Home' )
     end
   end
 
   describe "Help page" do
-    it "should have the <h1> element as 'Help'" do
+    before( :each ) do
       visit '/static_pages/help'
+    end
+      
+    it "should have the <h1> element as 'Help'" do
       page.should have_selector( 'h1', :text => 'Help' )
     end
 
-    it "should have the right title" do
-      visit '/static_pages/help'
-      page.should have_selector( 'title', :text => "#{base_title} | Help" )
+    it "should have the base title" do
+      page.should have_selector( 'title', :text => "#{base_title}" )
+    end
+
+    it "should have a custom page title" do
+      page.should have_selector( 'title', :text => '| Help' )
     end
   end
 
   describe "About page" do
-    it "should have the <h1> element as 'About Us'" do
+    before( :each ) do
       visit '/static_pages/about'
+    end
+      
+    it "should have the <h1> element as 'About Us'" do
       page.should have_selector( 'h1', :text => 'About Us' )
     end
 
-    it "should have the right title" do
-      visit '/static_pages/about'
-      page.should have_selector( 'title', :text => "#{base_title} | About Us" )
+    it "should have the base title" do
+      page.should have_selector( 'title', :text => "#{base_title}" )
+    end
+
+    it "should have a custom page title" do
+      page.should have_selector( 'title', :text => '| About Us' )
     end
   end
 
   describe "Contact page" do
-    it "should have the <h1> element as 'Contact Info'" do
+    before( :each ) do
       visit '/static_pages/contact'
+    end
+      
+    it "should have the <h1> element as 'Contact Info'" do
       page.should have_selector( 'h1', :text => 'Contact Info' )
     end
 
-    it "should have the right title" do
-      visit '/static_pages/contact'
-      page.should have_selector( 'title', :text => "#{base_title} | Contact" )
+    it "should have the base title" do
+      page.should have_selector( 'title', :text => "#{base_title}" )
+    end
+
+    it "should have a custom page title" do
+      page.should have_selector( 'title', :text => '| Contact' )
     end
   end
 
